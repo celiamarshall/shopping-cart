@@ -6,7 +6,7 @@ class AddItem extends Component {
     super(props)
 
     this.state = {
-      newItem: 40,
+      newItem: '',
       newQuantity: ''
     }
   }
@@ -25,7 +25,7 @@ class AddItem extends Component {
     this.props.addItem(selectedProduct[0], this.state.newQuantity)
 
     this.setState({
-      newItem : 40
+      newItem : ''
     })
   }
 
@@ -38,7 +38,7 @@ class AddItem extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="products">Products</label>
-          <select className="form-control" id="products" name="newItem" placeholder="Select an option" onChange={this.handleChange} required>
+          <select className="form-control" id="products" name="newItem" placeholder="Select an option" onChange={this.handleChange}>
             <option selected disabled>Choose a Product</option>
             {this.props.products.map(product => {
               return <Options name={product.name} id={product.id}/>
@@ -46,7 +46,7 @@ class AddItem extends Component {
 
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">Add to Cart</button>
+        <button type="submit" className="btn btn-primary" disabled={!this.state.newItem}>Add to Cart</button>
 
       </form>
     )

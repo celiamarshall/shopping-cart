@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 import CartHeader from './CartHeader'
 import CartFooter from './CartFooter'
 import CartItems from './CartItems'
@@ -34,26 +32,28 @@ class App extends Component {
 
   addItem = (product, quantity) => {
     this.setState({
-      cartItemsList: [...this.state.cartItemsList, {id: `${this.state.cartItemsList.length + 1}`, product: product, quantity: quantity}]
+      cartItemsList: [...this.state.cartItemsList, { id: `${this.state.cartItemsList.length + 1}`, product: product, quantity: quantity }]
     })
   }
 
   render() {
     return (
       <div className="App">
+      
         <CartHeader />
 
         <div className="container">
 
           <CartItems items={this.state.cartItemsList} />
 
-          <AddItem products={this.state.products} addItem={this.addItem}/>
+          <AddItem products={this.state.products} addItem={this.addItem} />
 
-          <Total items={this.state.cartItemsList}/>
+          <Total items={this.state.cartItemsList} />
 
         </div>
 
         <CartFooter copyright={'2016'} />
+
       </div>
     );
   }
